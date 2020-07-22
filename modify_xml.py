@@ -31,7 +31,6 @@ def fixCommandClass38(element):
 		if tag == 'CommandClasses':
 			for index, commandclass in enumerate(child):
 				if commandclass.get('id') == '38':
-					print('index ', index)
 					child.remove(commandclass)
 					child.insert(index, COMMANDCLASS38)
 
@@ -56,12 +55,7 @@ def modify_xml(tree, fix_commandclass=False):
 
 def write_xml(tree, filename):
 	tree.write(filename, encoding="utf-8", xml_declaration=True)
-	with open(filename, "r") as fh:
-		xml_txt = fh.read()
-	foo = minidom.parseString(xml_txt)
-	bar = foo.toprettyxml(indent='', newl='', encoding='utf-8') #indent="   ")
-	#with open(filename, "wb") as fh:
-	#	fh.write(bar)
+	print('Wrote file: ', filename)
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='Zen31 XML modifier')
